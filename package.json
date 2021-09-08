@@ -1,0 +1,37 @@
+{
+  "name": "skybox-mre",
+  "version": "1.0.0",
+  "description": "Altspace MRE for Skybox",
+  "main": "built/server.js",
+  "license": "© 2021 Nicholas Liang.  All rights reserved.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicholasLiang/skybox-mre.git"
+  },
+  "keywords": [
+    "altspacevr"
+  ],
+  "author": "Nicholas Liang",
+  "engines": {
+    "node": "14.x"
+  },
+  "bugs": {
+    "url": "https://github.com/NicholasLiang/skybox-mre/issues"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "typescript": "^4.1.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "start": "node ."
+  },
+  "dependencies": {
+    "@microsoft/mixed-reality-extension-sdk": "^0.20.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^14.14.22",
+    "dotenv": "^8.2.0"
+  }
+}

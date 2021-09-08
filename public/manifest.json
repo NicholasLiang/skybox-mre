@@ -1,0 +1,9 @@
+{
+    "name": "Giants Mask",
+    "author": "Nicholas Liang",
+    "license": "Nicholas Liang",
+    "repositoryUrl": "https://github.com/NicholasLiang/giants-mre",
+    "optionalPermissions": [
+        "user-interaction"
+    ]
+}
