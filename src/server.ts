@@ -88,8 +88,10 @@ class Skybox {
 
         if (params.url != null) {
             this.reloadImage(params.url);
+            textButton.appearance.enabled = false;
         } else {
             this.reloadImage(`${this.baseUrl}/Gy09v.jpg`);
+            textButton.appearance.enabled = true;
         }
 
         return true;
