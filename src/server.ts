@@ -25,7 +25,7 @@ class Skybox {
     private async started(params: MRE.ParameterSet) {
         this.assets = new MRE.AssetContainer(this.context);
 
-        const skyboxData = await this.assets.loadGltf(`${this.baseUrl}/skyboxSphere.glb`, 'box');
+        const skyboxData = await this.assets.loadGltf(`skyboxSphere.glb`, 'box');
         this.mat = this.assets.materials[0];
         
         // spawning Skybox
