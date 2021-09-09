@@ -1,0 +1,37 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+# More efficient: https://github.com/Azure/webapps-deploy/issues/119
+
+name: Build and deploy Node.js app to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js '14.x'
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - name: npm install, build, and test
+      run: |
+        # Build and test the project, then
+        # deploy to Azure Web App.
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+    - name: 'Deploy to Azure WebApp'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: mre-skybox
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e8e6b38caae2499ebebc4363d6f78ab3 }}
+        package: .
