@@ -23,7 +23,6 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "tsc --build --clean",
     "build": "tsc --build",
     "start": "node ."
