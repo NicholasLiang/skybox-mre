@@ -11,20 +11,12 @@ interface uri {
     id: string;
     uri: string;
 }
-
-interface uris {
-    ids: uri[];
-}
-
-const wrap = (s: string, w: number) => s.replace(
-    new RegExp(`(?![^\\n]{1,${w}}$)([^\\n]{1,${w}})\\s`, 'g'), '$1\n'
-);
+interface uris { ids: uri[]; }
 
 class Skybox {
     private assets: MRE.AssetContainer;
-    private skybox: MRE.Actor = null;
-    private mat: MRE.Material;
-    private errorText: MRE.Actor;
+    private skybox: MRE.Actor = null;               // skybox as MRE Actor
+    private mat: MRE.Material;                      // reference to material to change the texture
 
     constructor(private context: MRE.Context, private params: MRE.ParameterSet, private baseUrl: string) {
         this.context.onStarted(() => this.started(params));
@@ -32,10 +24,11 @@ class Skybox {
 
     private async started(params: MRE.ParameterSet) {
         this.assets = new MRE.AssetContainer(this.context);
-        const skyboxData = await this.assets.loadGltf('skyboxSphere.glb', 'box');
+
+        const skyboxData = await this.assets.loadGltf(`${this.baseUrl}/skyboxSphere.glb`, 'box');
         this.mat = this.assets.materials[0];
         
-        // spawn a copy of the glTF model
+        // spawning Skybox
         this.skybox = MRE.Actor.CreateFromPrefab(this.context, {
             firstPrefabFrom: skyboxData,
             actor: {
@@ -46,20 +39,18 @@ class Skybox {
             }
         });
 
-        this.errorText = MRE.Actor.Create(this.context, {
-            actor: {
-                text: {
-                    contents: "Error",
-                    height: 0.1,
-                    anchor: MRE.TextAnchorLocation.MiddleCenter,
-                    justify: MRE.TextJustify.Center,
-                    color: MRE.Color3.Red(),
-                }
-            }
-        })
+        if (params.url != null) {
+            this.reloadImage(params.url);
+        } else {
+            this.reloadImage(`${this.baseUrl}/Gy09v.jpg`);
+            this.addTextButton();
+        }
 
-        this.errorText.text.enabled = false;
+        return true;
+    }
 
+    private addTextButton()
+    {
         const textButton = MRE.Actor.Create(this.context, {
             actor: {
                 name: 'textButton',
@@ -74,34 +65,19 @@ class Skybox {
             }
         });
         textButton.setBehavior(MRE.ButtonBehavior).onClick(user => {
-            user.prompt("360 Image URL?", true)
+            user.prompt("Please upload your image and input the URL here: ", true)
                 .then(res => {
-                    // textButton.text.contents =
-                    //     `Click for prompt\nLast response: ${res.submitted ? res.text : "<cancelled>"}`;
-
                     this.reloadImage(res.text);
                 })
                 .catch(err => {
                     console.error(err);
                 });
         });
-
-        if (params.url != null) {
-            this.reloadImage(params.url);
-            textButton.appearance.enabled = false;
-        } else {
-            this.reloadImage(`${this.baseUrl}/Gy09v.jpg`);
-            textButton.appearance.enabled = true;
-        }
-
-        return true;
     }
 
     private reloadImage(url: any) 
     {
-        const tex = this.assets.createTexture(`${url}`, {
-            uri: url
-        });
+        const tex = this.assets.createTexture(`${url}`, { uri: url });
         this.mat.emissiveTexture = tex;
     }
 }

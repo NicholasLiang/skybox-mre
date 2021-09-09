@@ -1,8 +1,8 @@
 {
-    "name": "Giants Mask",
+    "name": "Skybox MRE",
     "author": "Nicholas Liang",
     "license": "Nicholas Liang",
-    "repositoryUrl": "https://github.com/NicholasLiang/giants-mre",
+    "repositoryUrl": "https://github.com/NicholasLiang/skybox-mre",
     "optionalPermissions": [
         "user-interaction"
     ]
