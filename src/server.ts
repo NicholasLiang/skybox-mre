@@ -7,12 +7,6 @@ process.on('unhandledRejection', reason => console.log('unhandledRejection', rea
 // Read .env if file exists
 dotenv.config();
 
-interface uri {
-    id: string;
-    uri: string;
-}
-interface uris { ids: uri[]; }
-
 class Skybox {
     private assets: MRE.AssetContainer;
     private skybox: MRE.Actor = null;               // skybox as MRE Actor
