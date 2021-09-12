@@ -138,7 +138,9 @@ class Skybox {
         this.textButton.setBehavior(MRE.ButtonBehavior).onClick(user => {
             user.prompt('Please upload your image and input the URL here: ', true)
                 .then(res => {
-                    this.reloadImage(res.text);
+                    if (res.submitted) {
+                        this.reloadImage(res.text);
+                    }
                 })
                 .catch(err => {
                     console.error(err);
