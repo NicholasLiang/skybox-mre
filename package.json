@@ -18,19 +18,17 @@
   "bugs": {
     "url": "https://github.com/NicholasLiang/skybox-mre/issues"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.12",
-    "typescript": "^4.1.3"
-  },
+  "devDependencies": {},
   "scripts": {
     "clean": "tsc --build --clean",
     "build": "tsc --build",
     "start": "node ."
   },
   "dependencies": {
+    "@microsoft/mixed-reality-extension-altspacevr-extras": "^0.20.0",
     "@microsoft/mixed-reality-extension-sdk": "^0.20.0",
-    "@types/dotenv": "^8.2.0",
     "@types/node": "^14.14.22",
-    "dotenv": "^8.2.0"
+    "node-fetch": "^2.6.1",
+    "typescript": "^4.1.3"
   }
 }
