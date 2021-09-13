@@ -2,6 +2,8 @@
 
 SkyboxMRE is an MRE app that host a NodeJS server using Mixed Reality Extension(MRE) package to render high quality, seamless 360 image in Altspace VR, a social VR platform, which is developed on Unity Game Engine.
 
+Notes: SkyboxMRE used a GlTF-based Skybox so this app won't be affected the upcoming URP render tools update for Altspace.
+
 # How to put the MRE app in Altspace VR?
 
 MRE Sample Link:
@@ -12,6 +14,7 @@ wss://mres.altvr.com/skybox
 # Parameters
 
 SkyboxMRE provide three parameters for you to customize your experience. The parameters are not case sensitive. Here is the list:
+
 - url
 - scale
 - moderator
@@ -64,7 +67,7 @@ Content Pack template:
 ```json
 {
   "url": "YourImageURLHere",
-  "scale": "an number, small, medium or large",
+  "scale": "a number, small, medium or large",
   "moderator": "true, false"
 }
 ```

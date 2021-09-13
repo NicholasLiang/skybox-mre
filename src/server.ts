@@ -1,7 +1,3 @@
-/*!
- * Copyright (c) Nicholas Liang. All rights reserved.
- */
-
 import * as MRE from '@microsoft/mixed-reality-extension-sdk';
 import { ModeratorFilter, SingleEventFilter } from '@microsoft/mixed-reality-extension-altspacevr-extras';
 import { resolve as resolvePath } from 'path';
@@ -21,18 +17,16 @@ class Skybox {
     private skybox: MRE.Actor = null;               // skybox as MRE Actor
     private mat: MRE.Material;                      // reference to material to change the texture
 
-    private textButton: MRE.Actor;                  // text button for inputing URL
-
-    private attachButton: MRE.Actor = null;         // attach button
+    private textButton: MRE.Actor;                  // text button for inputting URL
 
     constructor(private context: MRE.Context, private params: MRE.ParameterSet, private baseUrl: string) {
-        this.assets = new MRE.AssetContainer(this.context);
-
         this.context.onStarted(()           => this.started(params));
         this.context.onUserJoined((user)    => this.userJoined(user));
     }
 
     private async started(params: MRE.ParameterSet) {
+        this.assets = new MRE.AssetContainer(this.context);
+
         // loading skybox gltf
         const skyboxData = await this.assets.loadGltf(`${this.baseUrl}/skyboxSphere.glb`);
         this.mat = this.assets.materials[0];    // reference material to change the texture
@@ -53,11 +47,12 @@ class Skybox {
         const defaultModerator = "false";
 
         // fetch json
-        if (params.content_pack != null) {
+        if (params.content_pack != null) {  // if content pack is provided
+            // fetch the JSON raw file from Altspace web server
             fetch('https://account.altvr.com/api/content_packs/' + params.content_pack + '/raw.json')
                 .then((res: any) => res.json())
                 .then((json: any) => {
-                    // if there is a value, use it, or else, use default
+                    // if there is a value, then use the value provided, or else, use default value
                     json.url != null        ? this.reloadImage(json.url)                        : this.reloadImage(defaultURL);
                     json.scale != null      ? this.reloadSkybox(json.scale)                     : this.reloadSkybox(defaultScale);
                     json.moderator != null  ? this.generateTextButton(json.moderator)           : this.generateTextButton(defaultModerator);
@@ -69,16 +64,14 @@ class Skybox {
         }
     }
 
+    /** add group mask 'moderator' to user who is moderator and 'user' for everyone  */
     private userJoined(thisUser: MRE.User) {
-        // add group mask 'moderator' to user who is moderator
         thisUser.groups.add('user');
         this.filter = new ModeratorFilter(new SingleEventFilter(this.context));
         var userIsModerator = this.filter.users.includes(thisUser);
         if (userIsModerator) {
             thisUser.groups.add('moderator');
         }
-
-        console.log("user: " + thisUser.id);
     }
 
     /** reload skybox texture */
@@ -87,12 +80,12 @@ class Skybox {
         this.mat.emissiveTexture = tex;
     }
 
-    /** reload skybox size and position by number or string {small, median, large} */
+    /** reload skybox size and position by a number or string {small, medium, large} */
     private reloadSkybox(value: string) {
         var decimal = /^[-+]?[0-9]+\.[0-9]+$/;
         var isValidNumber = value.match(decimal);
         if (isValidNumber) {
-            // if a number is provided, scale will be set and height will set as 0
+            // if a number is provided, scale will be set as the number and height will set as 0
             this.rescaleSkybox(0, parseFloat(value));
         } else if (value.toUpperCase() === 'SMALL') {
             this.rescaleSkybox(0, 1);
@@ -111,7 +104,7 @@ class Skybox {
         this.skybox.transform.local.scale = new MRE.Vector3(scale, scale, scale);
     }
 
-    /** gereate text button and determine the group mask */
+    /** generate a text button and determine who can view it by the group mask */
     private generateTextButton(value: string) {
         if (value.toUpperCase() === 'TRUE') {
             this.userMask = new MRE.GroupMask(this.context, ['moderator']);
