@@ -56,14 +56,14 @@ class Skybox {
                 .then((res: any) => res.json())
                 .then((json: any) => {
                     // if there is a value, use it, or else, use default
-                    json.url != null            ? this.reloadImage(json.url)                                : this.reloadImage(defaultURL);
-                    json.scale != null          ? this.reloadSkybox(json.scale)                             : this.reloadSkybox("small");
-                    json.moderator_only != null ? this.generateTextButton(json.moderator_only)              : this.generateTextButton("true");
+                    json.url != null        ? this.reloadImage(json.url)                        : this.reloadImage(defaultURL);
+                    json.scale != null      ? this.reloadSkybox(json.scale)                     : this.reloadSkybox("small");
+                    json.moderator != null  ? this.generateTextButton(json.moderator)           : this.generateTextButton("true");
                 });
         } else {
-            params.url != null                  ? this.reloadImage(params.url)                              : this.reloadImage(defaultURL);
-            params.scale != null                ? this.reloadSkybox(String(params.scale))                   : this.reloadSkybox("small");
-            params.moderator_only != null       ? this.generateTextButton(String(params.moderator_only))    : this.generateTextButton("true");
+            params.url != null              ? this.reloadImage(params.url)                      : this.reloadImage(defaultURL);
+            params.scale != null            ? this.reloadSkybox(String(params.scale))           : this.reloadSkybox("small");
+            params.moderator != null        ? this.generateTextButton(String(params.moderator)) : this.generateTextButton("true");
         }
     }
 
@@ -93,8 +93,8 @@ class Skybox {
             // if a number is provided, scale will be set and height will set as 0
             this.rescaleSkybox(0, parseFloat(value));
         } else if (value.toUpperCase() === 'SMALL') {
-            this.rescaleSkybox(1.8, 1);
-        } else if (value.toUpperCase() === 'MEDIAN') {
+            this.rescaleSkybox(0, 1);
+        } else if (value.toUpperCase() === 'MEDIUM') {
             // reference to Jimmy @tuesy , sweet spot for shared experience
             this.rescaleSkybox(0.2, 8);
         } else if (value.toUpperCase() === 'LARGE') {

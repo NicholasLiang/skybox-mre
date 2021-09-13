@@ -14,7 +14,7 @@ wss://skybox-mre.azurewebsites.net
 SkyboxMRE provide three parameters for you to customize your experience. The parameters are not case sensitive. Here is the list:
 - url
 - scale
-- moderator_only
+- moderator
 
 
 ## URL
@@ -31,7 +31,7 @@ Change the size of the skybox for different scenarios
 
 Options:
 - **small** : private viewing section
-- **median** : small group
+- **medium** : small group
 - **large** : replace the skybox
 - or any given number in decimal
 
@@ -39,13 +39,13 @@ Example:
 ```
 wss://skybox-mre.azurewebsites.net?scale=small
 ```
-## Moderater only?
+## Moderater?
 
 A boolean value to set if only the moderater can change the URL in realtime
 
 Example:
 ```
-wss://skybox-mre.azurewebsites.net?moderater_only=false
+wss://skybox-mre.azurewebsites.net?moderater=false
 ```
 
 ## Content Pack
@@ -64,14 +64,14 @@ Content Pack template:
 ```json
 {
   "url": "YourImageURLHere",
-  "scale": "an number, small, median or large",
-  "moderator_only": "true, false"
+  "scale": "an number, small, medium or large",
+  "moderator": "true, false"
 }
 ```
 
 ## Combined?
 Example:
 ```
-wss://skybox-mre.azurewebsites.net?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png&scale=small&moderater_only=false
+wss://skybox-mre.azurewebsites.net?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png&scale=small&moderater=false
 ```
 
