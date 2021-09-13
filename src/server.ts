@@ -5,7 +5,6 @@
 import * as MRE from '@microsoft/mixed-reality-extension-sdk';
 import { ModeratorFilter, SingleEventFilter } from '@microsoft/mixed-reality-extension-altspacevr-extras';
 import { resolve as resolvePath } from 'path';
-import { Collider } from '@microsoft/mixed-reality-extension-sdk';
 
 const fetch = require('node-fetch');
 
@@ -28,6 +27,7 @@ class Skybox {
 
     constructor(private context: MRE.Context, private params: MRE.ParameterSet, private baseUrl: string) {
         this.assets = new MRE.AssetContainer(this.context);
+
         this.context.onStarted(()           => this.started(params));
         this.context.onUserJoined((user)    => this.userJoined(user));
     }
@@ -44,41 +44,9 @@ class Skybox {
                 name: 'Skybox',
                 appearance: {
                     materialId: this.mat.id     // reference material to change the texture
-                }
-            },
+                },
+            }
         });
-
-        // const cubeMesh = this.assets.createBoxMesh('ppMesh', 1, 1, 1);
-        // const cubeMat = this.assets.createMaterial('ppMat', {
-        //     color: new MRE.Color4(1, 1, 1, 0.1),
-        //     alphaMode: MRE.AlphaMode.Blend,
-        // });
-
-        // this.attachButton = MRE.Actor.Create(this.context, {
-        //     actor: {
-        //         name: "Button",
-        //         appearance: {
-        //             meshId: cubeMesh.id,
-        //             materialId: cubeMat.id
-        //         },
-        //         transform: {
-        //             local: {
-        //                 position: { x: 0, y: 0, z: 0 },
-        //                 scale: { x: 1, y: 1, z: 1 }
-        //             }
-        //         },
-        //         collider: {
-        //             isTrigger: true,
-        //             geometry: { shape: MRE.ColliderType.Box } 
-        //         }
-        //     }
-        // });
-
-        // this.attachButton.collider.onTrigger('trigger-enter', (otherActor) => {
-        //     console.log(otherActor.name);
-        // });
-
-        
 
         const defaultURL = `${this.baseUrl}/default.jpg`;
 
@@ -87,7 +55,7 @@ class Skybox {
             fetch('https://account.altvr.com/api/content_packs/' + params.content_pack + '/raw.json')
                 .then((res: any) => res.json())
                 .then((json: any) => {
-                    console.log(json);
+                    // if there is a value, use it, or else, use default
                     json.url != null            ? this.reloadImage(json.url)                                : this.reloadImage(defaultURL);
                     json.scale != null          ? this.reloadSkybox(json.scale)                             : this.reloadSkybox("small");
                     json.moderator_only != null ? this.generateTextButton(json.moderator_only)              : this.generateTextButton("true");
@@ -107,6 +75,8 @@ class Skybox {
         if (userIsModerator) {
             thisUser.groups.add('moderator');
         }
+
+        console.log("user: " + thisUser.id);
     }
 
     /** reload skybox texture */
@@ -115,7 +85,7 @@ class Skybox {
         this.mat.emissiveTexture = tex;
     }
 
-    /** reload skybox size and position by number or string */
+    /** reload skybox size and position by number or string {small, median, large} */
     private reloadSkybox(value: string) {
         var decimal = /^[-+]?[0-9]+\.[0-9]+$/;
         var isValidNumber = value.match(decimal);
@@ -126,7 +96,7 @@ class Skybox {
             this.rescaleSkybox(1.8, 1);
         } else if (value.toUpperCase() === 'MEDIAN') {
             // reference to Jimmy @tuesy , sweet spot for shared experience
-            this.rescaleSkybox(1.3, 5);
+            this.rescaleSkybox(0.2, 8);
         } else if (value.toUpperCase() === 'LARGE') {
             // replace the real skybox
             this.rescaleSkybox(1.8, 100);
