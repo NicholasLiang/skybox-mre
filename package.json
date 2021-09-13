@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "Altspace MRE for Skybox",
   "main": "built/server.js",
-  "license": "© 2021 Nicholas Liang.  All rights reserved.",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NicholasLiang/skybox-mre.git"
   },
   "keywords": [
-    "altspacevr"
+    "mixed reality",
+    "virtual reality",
+    "vr",
+    "altspacevr",
+    "mre",
+    "node"
   ],
-  "author": "Nicholas Liang",
+  "author": "Nicholas Liang <ningtaku@gmail.com>",
   "engines": {
     "node": "14.x"
   },
