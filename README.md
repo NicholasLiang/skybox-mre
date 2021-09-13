@@ -1,6 +1,6 @@
-# Skybox MRE App
+# SkyboxMRE App
 
-Skybox-mre is an MRE app that host a NodeJS server using Mixed Reality Extension(MRE) package to render high quality, seamless 360 image in Altspace VR, a social VR platform, which is developed on Unity Game Engine.
+SkyboxMRE is an MRE app that host a NodeJS server using Mixed Reality Extension(MRE) package to render high quality, seamless 360 image in Altspace VR, a social VR platform, which is developed on Unity Game Engine.
 
 # How to put the MRE app in Altspace VR?
 
@@ -10,9 +10,16 @@ wss://skybox-mre.azurewebsites.net
 ```
 
 # Parameters
+
+SkyboxMRE provide three parameters for you to customize your experience. The parameters are not case sensitive. Here is the list:
+- url
+- scale
+- moderator_only
+
+
 ## URL
 
-Provide a permanent link for the Skybox MRE so you don't have to set skybox url everytime
+Provide a permanent link for the SkyboxMRE so you don't have to set skybox url each time you use it.
 
 Example:
 ```
@@ -22,7 +29,7 @@ wss://skybox-mre.azurewebsites.net?url=https://docs.unity3d.com/uploads/Main/sky
 
 Change the size of the skybox for different scenarios
 
-### Options:
+Options:
 - **small** : private viewing section
 - **median** : small group
 - **large** : replace the skybox
@@ -56,9 +63,9 @@ wss://skybox-mre.azurewebsites.net?content_pack=1824573042232132050
 Content Pack template:
 ```json
 {
-  "url": Your image URL here,
-  "scale": a number, "small", "median" or "large",
-  "moderator_only": true or false
+  "url": "YourImageURLHere",
+  "scale": "an number, small, median or large",
+  "moderator_only": "true, false"
 }
 ```
 
