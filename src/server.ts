@@ -49,6 +49,8 @@ class Skybox {
         });
 
         const defaultURL = `${this.baseUrl}/default.jpg`;
+        const defaultScale = "small";
+        const defaultModerator = "false";
 
         // fetch json
         if (params.content_pack != null) {
@@ -57,13 +59,13 @@ class Skybox {
                 .then((json: any) => {
                     // if there is a value, use it, or else, use default
                     json.url != null        ? this.reloadImage(json.url)                        : this.reloadImage(defaultURL);
-                    json.scale != null      ? this.reloadSkybox(json.scale)                     : this.reloadSkybox("small");
-                    json.moderator != null  ? this.generateTextButton(json.moderator)           : this.generateTextButton("true");
+                    json.scale != null      ? this.reloadSkybox(json.scale)                     : this.reloadSkybox(defaultScale);
+                    json.moderator != null  ? this.generateTextButton(json.moderator)           : this.generateTextButton(defaultModerator);
                 });
         } else {
             params.url != null              ? this.reloadImage(params.url)                      : this.reloadImage(defaultURL);
-            params.scale != null            ? this.reloadSkybox(String(params.scale))           : this.reloadSkybox("small");
-            params.moderator != null        ? this.generateTextButton(String(params.moderator)) : this.generateTextButton("true");
+            params.scale != null            ? this.reloadSkybox(String(params.scale))           : this.reloadSkybox(defaultScale);
+            params.moderator != null        ? this.generateTextButton(String(params.moderator)) : this.generateTextButton(defaultModerator);
         }
     }
 
