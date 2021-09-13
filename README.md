@@ -23,7 +23,7 @@ Provide a permanent link for the SkyboxMRE so you don't have to set skybox url e
 
 Example:
 ```
-wss://skybox-mre.azurewebsites.net?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png
+wss://mres.altvr.com/skybox?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png
 ```
 ## Size
 
