@@ -6,7 +6,7 @@ SkyboxMRE is an MRE app that host a NodeJS server using Mixed Reality Extension(
 
 MRE Sample Link:
 ```
-wss://skybox-mre.azurewebsites.net
+wss://mres.altvr.com/skybox
 ```
 
 # Parameters
@@ -37,7 +37,7 @@ Options:
 
 Example:
 ```
-wss://skybox-mre.azurewebsites.net?scale=small
+wss://mres.altvr.com/skybox?scale=small
 ```
 ## Moderater?
 
@@ -45,7 +45,7 @@ A boolean value to set if only the moderater can change the URL in realtime
 
 Example:
 ```
-wss://skybox-mre.azurewebsites.net?moderater=false
+wss://mres.altvr.com/skybox?moderater=false
 ```
 
 ## Content Pack
@@ -57,7 +57,7 @@ wss://skybox-mre.azurewebsites.net?moderater=false
 
 Example:
 ```
-wss://skybox-mre.azurewebsites.net?content_pack=1824573042232132050
+wss://mres.altvr.com/skybox?content_pack=1824573042232132050
 ```
 
 Content Pack template:
@@ -72,6 +72,6 @@ Content Pack template:
 ## Combined?
 Example:
 ```
-wss://skybox-mre.azurewebsites.net?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png&scale=small&moderater=false
+wss://mres.altvr.com/skybox?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png&scale=small&moderater=false
 ```
 
