@@ -90,8 +90,6 @@ Developed by Nicholas Liang
 
 [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/NicholasLiang)
 &nbsp;
-[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/)
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/nicholas-liang-20a44414b/)
 &nbsp;
-
-LinkedIn: 
-Twitter: https://twitter.com/_nickliang
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/_nickliang.svg?style=social&label=Follow%20%40_nickliang_)](https://twitter.com/_nickliang)
