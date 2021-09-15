@@ -84,3 +84,14 @@ Example:
 wss://mres.altvr.com/skybox?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png&scale=small&moderator=false
 ```
 
+## Credit
+
+Developed by Nicholas Liang
+
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/NicholasLiang)
+&nbsp;
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/)
+&nbsp;
+
+LinkedIn: 
+Twitter: https://twitter.com/_nickliang
