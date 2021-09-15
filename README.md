@@ -42,9 +42,9 @@ Example:
 ```
 wss://mres.altvr.com/skybox?scale=small
 ```
-## Moderater?
+## Moderator?
 
-A boolean value to set if only the moderater can change the URL in realtime
+A boolean value to set if only the moderator can change the URL in realtime
 
 Options:
 - **false** or **off** : everyone can use the button and change the URL of the skybox. Great for a 360 image sharing section
@@ -53,8 +53,8 @@ Options:
 
 Example:
 ```
-wss://mres.altvr.com/skybox?moderater=false
-wss://mres.altvr.com/skybox?moderater=on
+wss://mres.altvr.com/skybox?moderator=false
+wss://mres.altvr.com/skybox?moderator=on
 ```
 
 ## Content Pack
@@ -81,6 +81,6 @@ Content Pack template:
 ## Combined?
 Example:
 ```
-wss://mres.altvr.com/skybox?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png&scale=small&moderater=false
+wss://mres.altvr.com/skybox?url=https://docs.unity3d.com/uploads/Main/skybox-lat-long-layout.png&scale=small&moderator=false
 ```
 
