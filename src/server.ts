@@ -106,9 +106,9 @@ class Skybox {
 
     /** generate a text button and determine who can view it by the group mask */
     private generateTextButton(value: string) {
-        if (value.toUpperCase() === 'TRUE') {
+        if (value.toUpperCase() === 'TRUE' || value.toUpperCase() === 'ON') {
             this.userMask = new MRE.GroupMask(this.context, ['moderator']);
-        } else if (value.toUpperCase() === 'FALSE') {
+        } else if (value.toUpperCase() === 'FALSE' || value.toUpperCase() === 'OFF') {
             this.userMask = new MRE.GroupMask(this.context, ['user']);
         }
         this.createInputButton(this.userMask);

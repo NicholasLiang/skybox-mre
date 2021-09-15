@@ -46,9 +46,15 @@ wss://mres.altvr.com/skybox?scale=small
 
 A boolean value to set if only the moderater can change the URL in realtime
 
+Options:
+- **false** or **off** : everyone can use the button and change the URL of the skybox. Great for a 360 image sharing section
+- **true** or **on** : only the host can change the URL of the skybox.
+
+
 Example:
 ```
 wss://mres.altvr.com/skybox?moderater=false
+wss://mres.altvr.com/skybox?moderater=on
 ```
 
 ## Content Pack
@@ -68,7 +74,7 @@ Content Pack template:
 {
   "url": "YourImageURLHere",
   "scale": "a number, small, medium or large",
-  "moderator": "true, false"
+  "moderator": "true, on, false, off"
 }
 ```
 
