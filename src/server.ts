@@ -44,7 +44,7 @@ class Skybox {
 
         const defaultURL = `${this.baseUrl}/default.jpg`;
         const defaultScale = "small";
-        const defaultModerator = "false";
+        const defaultModerator = "true";
 
         // fetch json
         if (params.content_pack != null) {  // if content pack is provided
